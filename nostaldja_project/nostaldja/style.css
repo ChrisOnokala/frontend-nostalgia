@@ -1,0 +1,22 @@
+html * {
+	padding: 0;
+	margin: 0;
+}
+body {
+	min-height: 100vh;
+}
+h1 {
+	font-family: "Roboto";
+	letter-spacing: 0.25em;
+	font-size: 50px;
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+nav ul li {
+	display: inline-block;
+	list-style-type: none;
+}

@@ -1,0 +1,26 @@
+{% extends 'nostaldja/home.html' %} {% block content %}
+<h2>Create Fad</h2>
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Do it</button>
+</form>
+{% endblock %}
+
+{% extends 'nostaldja/home.html' %} {% block content %}
+<h2>{{ fad.name }}: {{ fad.decade }}</h2>
+<img src="{{ fad.image_url }}" class="fad-image" />
+{{ fad.description }}
+<p class="edit-options">
+	<a href="{% url 'fad_delete' pk=fad.pk %}">Delete fad</a> |
+	<a href="{% url 'fad_update' pk=fad.pk %}">Edit fad</a>
+</p>
+{% endblock %}
+
+{% extends 'nostaldja/home.html' %} {% block content %}
+<h2>Fad List</h2>
+{% for fad in fads %}
+<p>
+	<a href="{% url 'fad_detail' pk=fad.pk %}">{{ fad.name }}</a>
+</p>
+{% endfor %} {% endblock %}

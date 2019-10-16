@@ -1,0 +1,29 @@
+{% extends 'nostaldja/home.html' %} {% block content %}
+<h2>Create Decade</h2>
+<form method="POST">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Do it</button>
+</form>
+{% endblock %}
+
+{% extends 'nostaldja/home.html' %} {% block content %}
+<h2>The {{ decade.start_year }}</h2>
+{% if fads|length == 0 %} Add more {% endif %} {% for fad in fads %}
+<p>
+	<a href="{% url 'fad_detail' pk=fad.pk %}">{{ fad.name }}</a>
+</p>
+{% endfor %}
+<p class="edit-options">
+	<a href="{%  url 'decade_update' pk=decade.pk %}">Edit decade</a> |
+	<a href="{% url 'decade_delete' pk=decade.pk %}">Delete decade</a>
+</p>
+{% endblock %}
+
+{% extends 'nostaldja/home.html' %} {% block content %}
+<h2>Decade List</h2>
+{% for decade in decades %}
+<p>
+	<a href="{% url 'decade_detail' pk=decade.pk %}">{{ decade.start_year }}</a>
+</p>
+{% endfor %} {% endblock %}
